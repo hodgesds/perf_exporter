@@ -14,8 +14,33 @@
 
 package main
 
-import "github.com/hodgesds/perf_exporter/cmd"
+import (
+	"fmt"
+	"runtime"
+
+	"github.com/hodgesds/perf_exporter/cmd"
+)
+
+var (
+	// BuildDate is the data the binary was built.
+	BuildDate string
+)
 
 func main() {
+	template := `%s
+Build Timestamp:
+  %s
+
+Go Version:
+  %s
+`
+	cmd.RootCmd.SetUsageTemplate(
+		fmt.Sprintf(
+			template,
+			cmd.RootCmd.UsageString(),
+			BuildDate,
+			runtime.Version(),
+		))
+
 	cmd.Execute()
 }
