@@ -1,6 +1,6 @@
 # perf_exporter
 `perf_exporter` is a Prometheus exporter that exposes metrics from the perf
-subsytem in Linux.
+subsystem in Linux.
 
 ## Configuration
 The configuration format allows you to specific specific profilers at the
