@@ -50,6 +50,10 @@ more info see `man perf_event_open`.
 This repo uses make for the build system, to build the binary just type `make`.
 It is assumed that you are using go 1.11+.
 
+## Example
+Here is an example of some of the events that can be exposed:
+![](https://github.com/hodgesds/dev_pics/blob/master/events.png)
+
 ## FAQ
 - How is perf being used? You may want to see this
   [library](https://github.com/hodgesds/perf-utils) which is where most of the
