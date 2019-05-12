@@ -1,0 +1,15 @@
+#!/bin/bash
+sub=""
+last_sub=""
+
+while read line
+do
+  sub=$(printf '%s' "$line" | cut -d ':' -f 1)
+  event=$(printf '%s' "$line" | cut -d ':' -f 2)
+  if [ "$sub" != "$last_sub" ]; then
+    echo -e "$sub:\n  events:\n    - $event"
+  else
+    echo "    - $event"
+  fi
+  last_sub=$sub
+done < "${1:-/dev/stdin}"

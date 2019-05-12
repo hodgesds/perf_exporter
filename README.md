@@ -1,16 +1,17 @@
 # perf_exporter
 `perf_exporter` is a Prometheus exporter that exposes metrics from the perf
-subsystem in Linux.
+subsystem in Linux. It can read any kernel tracepoints and expose them as
+Prometheus compatible metrics.
 
 ## Configuration
 The configuration format allows you to specific specific profilers at the
 subsytem level. For each subsytem individual events can be configured. Note
 that configuring a subsystem event for a specific processor isn't supported as
 of now. To find available events for your system you can use the perf tooling
-(i.e. `perf list`) or you can read directly from debugfs (which is what this
-library does) in the assumed mount point of
-`/sys/kernel/debug/tracing/available_events`. Here is a rough example of a
-configuration file to get started.
+(i.e. `perf list`) or you can read directly from tracefs `available_events` in
+combination with the `tools/tracepoint2yaml` script.  Here is a rough example
+of a configuration file to get started (note this is ***highly*** system
+specific).
 
 ```
 kmem:
@@ -41,9 +42,9 @@ net:
     - net_dev_start_xmit
 ```
 
-Note that the proper value for `perf_event_paranoid` should be set (in this
+**Note** that the proper value for `perf_event_paranoid` should be set, in this
 case it should be set to **0** becuase the exporter runs on all processors. For
-more infor see `man perf_event_open`.
+more info see `man perf_event_open`.
 
 ## Building
 This repo uses make for the build system, to build the binary just type `make`.
