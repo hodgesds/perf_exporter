@@ -92,6 +92,11 @@ func init() {
 		"0.0.0.0:8585",
 		"Server listen address",
 	)
+	RootCmd.PersistentFlags().IntP(
+		"pid", "p",
+		-1,
+		"PID (default all)",
+	)
 	viper.BindPFlags(RootCmd.PersistentFlags())
 	cobra.OnInitialize(initConfig)
 }

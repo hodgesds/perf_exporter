@@ -52,6 +52,7 @@ func NewPerfCollector(config *viper.Viper) (PerfCollector, error) {
 	descs := map[string]map[string]*prometheus.Desc{}
 	profilers := map[int]perf.GroupProfiler{}
 	collectionOrder := []string{}
+	pid := config.GetInt("pid")
 
 	for _, subsystem := range config.AllKeys() {
 		subsystem = strings.Replace(subsystem, ".events", "", -1)
@@ -98,7 +99,7 @@ func NewPerfCollector(config *viper.Viper) (PerfCollector, error) {
 	}
 
 	for cpu := 0; cpu < runtime.NumCPU(); cpu++ {
-		profiler, err := perf.NewGroupProfiler(-1, cpu, 0, eventAttrs...)
+		profiler, err := perf.NewGroupProfiler(pid, cpu, 0, eventAttrs...)
 		if err != nil {
 			return nil, fmt.Errorf(
 				"Unable to configure GroupProfiler: %v", err)
