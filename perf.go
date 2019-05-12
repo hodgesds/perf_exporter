@@ -82,8 +82,9 @@ func NewPerfCollector(config *viper.Viper) (PerfCollector, error) {
 			descs[subsystem][event] = prometheus.NewDesc(
 				prometheus.BuildFQName(
 					namespace,
-					subsystem,
-					event,
+					// need to replace -
+					strings.Replace(subsystem, "-", "_", -1),
+					strings.Replace(event, "-", "_", -1),
 				),
 				fmt.Sprintf(
 					"perf event %s %s",

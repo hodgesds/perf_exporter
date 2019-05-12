@@ -55,9 +55,9 @@ var RootCmd = &cobra.Command{
 		http.Handle(metricsPath, prometheus.Handler())
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte(`<html>
-             <head><title>Bind Exporter</title></head>
+             <head><title>Perf Exporter</title></head>
              <body>
-             <h1>Bind Exporter</h1>
+             <h1>Perf Exporter</h1>
              <p><a href='` + metricsPath + `'>Metrics</a></p>
              </body>
              </html>`))
