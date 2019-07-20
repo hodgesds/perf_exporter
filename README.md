@@ -4,10 +4,10 @@ subsystem in Linux. It can read any kernel tracepoints and expose them as
 Prometheus compatible metrics.
 
 ## Configuration
-The configuration format allows you to specific specific profilers at the
-subsytem level. For each subsytem individual events can be configured. Note
-that configuring a subsystem event for a specific processor isn't supported as
-of now. To find available events for your system you can use the perf tooling
+The configuration format allows you to specific profilers at the subsytem
+level. For each subsytem individual events can be configured. Note that
+configuring a subsystem event for a specific processor isn't supported as of
+now. To find available events for your system you can use the perf tooling
 (i.e. `perf list`) or you can read directly from tracefs `available_events` in
 combination with the `tools/tracepoint2yaml` script.  Here is a rough example
 of a configuration file to get started (note this is ***highly*** system
@@ -58,7 +58,6 @@ Here is an example of some of the events that can be exposed:
 - How is perf being used? You may want to see this
   [library](https://github.com/hodgesds/perf-utils) which is where most of the
   perf related utilities are.
-- Should I use this in production? Probably not yet, this is pretty experimental software.
 - I don't see values for my perf events, is the collector broken? This is
   difficult to debug due to a large number of factors at play. Everything from
   the way your kernel was configured to debugfs mount points can cause an
