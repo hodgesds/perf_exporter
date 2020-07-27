@@ -1,7 +1,12 @@
 # perf_exporter
 `perf_exporter` is a Prometheus exporter that exposes metrics from the perf
 subsystem in Linux. It can read any kernel tracepoints and expose them as
-Prometheus compatible metrics.
+Prometheus compatible metrics. **NOTE** this code is largely been merged
+upstream into [`node_exporter`](https://github.com/prometheus/node_exporter),
+which you can use the `--collector.perf.tracepoint`flag
+(ex: `--collector.perf.tracepoint="sched:sched_process_exec"`) to accomplish
+the same type of monitoring.
+
 
 ## Configuration
 The configuration format allows you to specific profilers at the subsytem
