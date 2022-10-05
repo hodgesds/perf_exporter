@@ -9,7 +9,7 @@ the same type of monitoring.
 
 
 ## Configuration
-The configuration format allows you to specific profilers at the subsytem
+The configuration format allows you to specify counters at the subsytem
 level. For each subsytem individual events can be configured. Note that
 configuring a subsystem event for a specific processor isn't supported as of
 now. To find available events for your system you can use the perf tooling
